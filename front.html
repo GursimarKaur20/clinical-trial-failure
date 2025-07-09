@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Trial Failure Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #e5bedc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 40px;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #e5bedc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #e5bedc;
+        }
+        .result {
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+        }
+        footer {
+            margin-top: 40px;
+            background:#e5bedc;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Clinical Trial Failure Predictor</h1>
+    </header>
+    <main>
+        <form id="predict-form">
+            <label for="enrollment">Enrollment Count:</label>
+            <input type="number" id="enrollment" required>
+
+            <label for="duration">Trial Duration (days):</label>
+            <input type="number" id="duration" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="All">All</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+
+            <label for="phase">Phase:</label>
+            <select id="phase">
+                <option value="Phase 1">Phase 1</option>
+                <option value="Phase 2">Phase 2</option>
+                <option value="Phase 3">Phase 3</option>
+                <option value="Phase 4">Phase 4</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+
+            <label for="study_type">Study Type:</label>
+            <select id="study_type">
+                <option value="Interventional">Interventional</option>
+                <option value="Observational">Observational</option>
+                <option value="Expanded Access">Expanded Access</option>
+            </select>
+
+            <button type="submit">Predict Outcome</button>
+        </form>
+
+        <div class="result" id="prediction-result"></div>
+
+        
+    </main>
+
+    <footer>
+        Developers: Gursimar Kaur and Isha Bhatt &copy; All rights reserved
+    </footer>
+
+    <script>
+        document.getElementById("predict-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Normally you'd send data to backend API here
+            // Simulate a result for demonstration:
+            const enrollment = parseInt(document.getElementById("enrollment").value);
+            const duration = parseInt(document.getElementById("duration").value);
+            let result = "Likely to FAIL";
+
+            if (enrollment > 100 && duration > 30) {
+                result = "Likely to SUCCEED";
+            }
+
+            document.getElementById("prediction-result").textContent = `Prediction: ${result}`;
+        });
+    </script>
+</body>
+</html>
